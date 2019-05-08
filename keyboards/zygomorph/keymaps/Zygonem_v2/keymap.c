@@ -155,7 +155,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 }
 uint16_t get_tapping_term(uint16_t keycode) {
     switch (keycode) {
-        case (LT(_NUM,KC_QUOT):
+        case LT(_NUM,KC_QUOT):
               return TAPPING_TERM + 500;
         default:
               return TAPPING_TERM;
