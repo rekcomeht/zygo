@@ -25,10 +25,12 @@ enum custom_keycodes {
   ADJ,
   RGBRST,
   NUM,
-  MOVE
+  MOVE,
+  CAD
 };
 
 #define FN_CAPS  LT(_FN, KC_CAPS)
+#define CAD  LCTL(LALT(KC_DEL))
 
 // Define your non-alpha grouping in this define's LAYOUT, and all your BASE_LAYERS will share the same mod/macro columns
   /*  / Base Layout \
@@ -121,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_MOVE] = LAYOUT_5x12( \
   KC_MS_ACCEL2, RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, _______, KC_PGUP,   KC_UP,   KC_HOME, KC_INS,  _______, \
-  RESET,        RGB_HUD, RGB_SAD, RGB_VAD, _______, _______, _______, KC_LEFT,   _______, KC_RGHT, _______, _______, \
+  RESET,        RGB_HUD, RGB_SAD, RGB_VAD, _______, _______, _______, KC_LEFT,   _______, KC_RGHT, _______, CAD, \
   RGB_TOG,      RGB_M_P, RGB_M_R, RGB_M_SN, RGB_M_G, _______, _______, KC_PGDOWN, KC_DOWN, KC_END,  KC_APP,  _______, \
   _______,      RGB_M_B, RGB_M_SW, RGB_M_K, _______, _______, _______, _______,   _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
@@ -155,8 +157,8 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 }
 uint16_t get_tapping_term(uint16_t keycode) {
     switch (keycode) {
-        case (LT(_NUM,KC_QUOT):
-              return TAPPING_TERM + 500;
+        case LT(_NUM,KC_QUOT):
+              return TAPPING_TERM + 125;
         default:
               return TAPPING_TERM;
     }
